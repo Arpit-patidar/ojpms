@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* =========================
+   LIGHT THEME
+========================= */
+
+:root[data-theme="light"]{
+
+    --bg:#ffffff;
+    --bg2:#f1f5f9;
+
+    --card:#ffffff;
+
+    --text:#111827;
+    --text2:#374151;
+
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+
+    --border:#dbe4f0;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+:root[data-theme="dark"]{
+
+    --bg:#050816;
+    --bg2:#0f172a;
+
+    --card:#111827;
+
+    --text:#ffffff;
+    --text2:#cbd5e1;
+
+    --primary:#00ffff;
+    --secondary:#7c3aed;
+
+    --border:#1e293b;
+
+    --shadow:0 0 25px rgba(0,255,255,.15);
+
+}
+
+/* =========================
+   CLASSIC GOLD
+========================= */
+
+:root[data-theme="classic"]{
+
+    --bg:#0a0a0a;
+    --bg2:#161616;
+
+    --card:#1b1b1b;
+
+    --text:#FFD700;
+    --text2:#E6C75F;
+
+    --primary:#FFD700;
+    --secondary:#B8860B;
+
+    --border:#8B6914;
+
+    --shadow:0 0 35px rgba(255,215,0,.25);
+
+}
+
+/* =========================
+   SYSTEM THEME
+========================= */
+
+@media(prefers-color-scheme:dark){
+
+:root[data-theme="system"]{
+
+    --bg:#050816;
+    --bg2:#0f172a;
+
+    --card:#111827;
+
+    --text:#ffffff;
+    --text2:#cbd5e1;
+
+    --primary:#00ffff;
+    --secondary:#7c3aed;
+
+    --border:#1e293b;
+
+    --shadow:0 0 25px rgba(0,255,255,.15);
+}
+}
+
+@media(prefers-color-scheme:light){
+
+:root[data-theme="system"]{
+
+    --bg:#ffffff;
+    --bg2:#f1f5f9;
+
+    --card:#ffffff;
+
+    --text:#111827;
+    --text2:#374151;
+
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+
+    --border:#dbe4f0;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--bg),
+    var(--bg2)
+    );
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    transition:.4s;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   GLOBAL TEXT
+========================= */
+
+h1,h2,h3,h4,h5,h6{
+    color:var(--text);
+}
+
+p,span,label{
+    color:var(--text2);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:25px 80px;
+
+    background:var(--card);
+
+    box-shadow:var(--shadow);
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+    top:0;
+
+    z-index:999;
+}
+
+.navbar h1{
+
+    color:var(--primary);
+
+    font-size:2rem;
+
+    font-weight:800;
+}
+
+.nav-links{
+
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    width:90%;
+    margin:auto;
+
+    min-height:90vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.hero-left{
+
+    width:55%;
+}
+
+.hero-left h1{
+
+    font-size:4.5rem;
+
+    line-height:1.1;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    margin-bottom:20px;
+}
+
+.hero-left p{
+
+    font-size:1.2rem;
+
+    color:var(--text2);
+
+    line-height:1.8;
+}
+
+.tag{
+
+    display:inline-block;
+
+    padding:12px 25px;
+
+    border-radius:50px;
+
+    background:rgba(37,99,235,.1);
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    margin-bottom:25px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+
+    display:inline-block;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    color:#fff !important;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+    );
+
+    box-shadow:
+    0 8px 25px rgba(37,99,235,.35);
+
+    transition:.4s;
+}
+
+.btn:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.05);
+
+}
+
+.btn-outline{
+
+    display:inline-block;
+
+    padding:14px 30px;
+
+    border-radius:12px;
+
+    border:2px solid var(--primary);
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    transition:.4s;
+}
+
+.btn-outline:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card,
+.job-card,
+.glass-card,
+.stat-box{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    color:var(--text);
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+}
+
+.card:hover,
+.job-card:hover,
+.glass-card:hover,
+.stat-box:hover{
+
+    transform:
+    translateY(-10px);
+
+}
+
+.glass-card h3{
+    color:var(--primary);
+}
+
+/* =========================
+   JOB GRID
+========================= */
+
+.jobs-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+    outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+    margin:80px 0;
+}
+
+.stat-box{
+
+    width:250px;
+
+    text-align:center;
+}
+
+.stat-box h2{
+
+    color:var(--primary);
+
+    font-size:3rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:50px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border-top:1px solid var(--border);
+
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.navbar{
+
+    flex-direction:column;
+
+    gap:15px;
+
+    padding:20px;
+}
+
+.hero{
+
+    flex-direction:column;
+
+    text-align:center;
+}
+
+.hero-left{
+
+    width:100%;
+}
+
+.hero-left h1{
+
+    font-size:3rem;
+}
+}
