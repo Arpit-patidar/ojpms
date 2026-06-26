@@ -16,10 +16,10 @@ public class Application {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Job job;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	
 	private String status="APPLIED";

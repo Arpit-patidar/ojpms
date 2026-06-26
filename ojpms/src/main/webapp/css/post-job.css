@@ -1,0 +1,602 @@
+@charset "UTF-8";
+
+/* ==========================
+   ROOT COLORS
+========================== */
+
+:root{
+
+	--bg-dark:#0B1120;
+	--bg-second:#111827;
+	--bg-third:#1E293B;
+
+	--primary:#2563EB;
+	--secondary:#4F46E5;
+	--accent:#38BDF8;
+
+	--success:#10B981;
+
+	--text:#F8FAFC;
+	--light:#CBD5E1;
+	--muted:#94A3B8;
+
+	--glass:
+	rgba(255,255,255,.06);
+
+	--border:
+	rgba(255,255,255,.08);
+
+	--shadow:
+	rgba(0,0,0,.35);
+}
+
+/* ==========================
+   GLOBAL
+========================== */
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+
+	font-family:
+	'Segoe UI',
+	sans-serif;
+}
+
+body{
+
+	background:
+	radial-gradient(
+	circle at top left,
+	rgba(37,99,235,.12),
+	transparent 30%),
+
+	radial-gradient(
+	circle at bottom right,
+	rgba(79,70,229,.12),
+	transparent 30%),
+
+	linear-gradient(
+	135deg,
+	#020617,
+	#0F172A,
+	#111827,
+	#1E293B);
+
+	background-size:
+	400% 400%;
+
+	animation:
+	gradientMove 16s
+	ease infinite;
+
+	color:
+	var(--text);
+
+	min-height:100vh;
+
+	overflow-x:hidden;
+}
+
+@keyframes gradientMove{
+
+	0%{
+		background-position:
+		0% 50%;
+	}
+
+	50%{
+		background-position:
+		100% 50%;
+	}
+
+	100%{
+		background-position:
+		0% 50%;
+	}
+}
+
+/* ==========================
+   BACKGROUND BLOBS
+========================== */
+
+.bg-blur{
+
+	position:fixed;
+
+	border-radius:50%;
+
+	filter:blur(120px);
+
+	z-index:-1;
+
+	animation:
+	floatBlob 10s
+	infinite alternate;
+}
+
+.blur1{
+
+	width:320px;
+	height:320px;
+
+	background:
+	rgba(37,99,235,.18);
+
+	top:-5%;
+	left:-5%;
+}
+
+.blur2{
+
+	width:350px;
+	height:350px;
+
+	background:
+	rgba(79,70,229,.16);
+
+	right:-5%;
+	top:35%;
+}
+
+.blur3{
+
+	width:260px;
+	height:260px;
+
+	background:
+	rgba(56,189,248,.14);
+
+	left:40%;
+	bottom:0;
+}
+
+@keyframes floatBlob{
+
+	from{
+		transform:
+		translateY(0);
+	}
+
+	to{
+		transform:
+		translateY(-40px);
+	}
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar{
+
+	display:flex;
+	align-items:center;
+	justify-content:
+	space-between;
+
+	padding:
+	22px 8%;
+
+	background:
+	rgba(2,6,23,.88);
+
+	backdrop-filter:
+	blur(22px);
+
+	border-bottom:
+	1px solid
+	rgba(255,255,255,.08);
+
+	position:sticky;
+	top:0;
+
+	z-index:1000;
+}
+
+.navbar h1{
+
+	font-size:30px;
+	font-weight:700;
+
+	color:white;
+}
+
+.nav-links{
+
+	display:flex;
+	gap:18px;
+}
+
+.nav-links a{
+
+	text-decoration:none;
+
+	color:
+	var(--light);
+
+	padding:
+	12px 20px;
+
+	border-radius:12px;
+
+	font-weight:500;
+
+	transition:.3s;
+}
+
+.nav-links a:hover{
+
+	background:
+	rgba(255,255,255,.08);
+
+	color:
+	var(--accent);
+
+	transform:
+	translateY(-2px);
+}
+
+/* ==========================
+   MAIN LAYOUT
+========================== */
+
+.post-job-container{
+
+	display:flex;
+	justify-content:
+	space-between;
+
+	align-items:center;
+
+	padding:
+	80px 8%;
+
+	gap:60px;
+}
+
+/* ==========================
+   LEFT PANEL
+========================== */
+
+.left-panel{
+
+	width:40%;
+
+	animation:
+	fadeUp 1s ease;
+}
+
+.tag{
+
+	display:inline-block;
+
+	background:
+	rgba(56,189,248,.12);
+
+	color:
+	var(--accent);
+
+	padding:
+	10px 22px;
+
+	border-radius:50px;
+
+	font-size:14px;
+	font-weight:600;
+
+	margin-bottom:20px;
+}
+
+.left-panel h1{
+
+	font-size:58px;
+
+	line-height:1.2;
+
+	margin-bottom:20px;
+
+	font-weight:800;
+
+	color:white;
+}
+
+.left-panel p{
+
+	font-size:19px;
+
+	line-height:1.8;
+
+	color:
+	var(--light);
+
+	margin-bottom:30px;
+}
+
+/* ==========================
+   INFO CARD
+========================== */
+
+.info-card{
+
+	background:
+	var(--glass);
+
+	border:
+	1px solid
+	var(--border);
+
+	backdrop-filter:
+	blur(20px);
+
+	border-radius:28px;
+
+	padding:30px;
+
+	box-shadow:
+	0 20px 50px
+	rgba(0,0,0,.25);
+}
+
+.info-card h3{
+
+	font-size:24px;
+
+	margin-bottom:20px;
+
+	color:
+	var(--accent);
+}
+
+.info-card ul{
+
+	list-style:none;
+}
+
+.info-card li{
+
+	margin-bottom:15px;
+
+	color:
+	var(--light);
+
+	position:relative;
+
+	padding-left:28px;
+}
+
+.info-card li::before{
+
+	content:"✓";
+
+	position:absolute;
+
+	left:0;
+
+	color:
+	var(--success);
+
+	font-weight:bold;
+}
+
+/* ==========================
+   FORM CARD
+========================== */
+
+.post-job-card{
+
+	width:60%;
+
+	background:
+	var(--glass);
+
+	backdrop-filter:
+	blur(22px);
+
+	border:
+	1px solid
+	var(--border);
+
+	border-radius:32px;
+
+	padding:45px;
+
+	box-shadow:
+	0 20px 60px
+	rgba(0,0,0,.30);
+
+	animation:
+	fadeUp 1.1s ease;
+}
+
+.post-job-card h2{
+
+	font-size:34px;
+
+	margin-bottom:30px;
+
+	text-align:center;
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.row{
+
+	display:grid;
+
+	grid-template-columns:
+	1fr 1fr;
+
+	gap:20px;
+}
+
+.input-group{
+
+	margin-bottom:22px;
+}
+
+.input-group label{
+
+	display:block;
+
+	margin-bottom:10px;
+
+	font-size:15px;
+
+	font-weight:600;
+
+	color:
+	var(--light);
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+
+	width:100%;
+
+	padding:
+	16px 18px;
+
+	border-radius:14px;
+
+	background:
+	rgba(255,255,255,.05);
+
+	border:
+	1px solid
+	rgba(255,255,255,.08);
+
+	outline:none;
+
+	color:white;
+
+	font-size:15px;
+
+	transition:.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+
+	border:
+	1px solid
+	var(--accent);
+
+	box-shadow:
+	0 0 15px
+	rgba(56,189,248,.15);
+}
+
+textarea{
+
+	resize:none;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn{
+
+	width:100%;
+
+	border:none;
+
+	padding:
+	18px;
+
+	border-radius:16px;
+
+	background:
+	linear-gradient(
+	135deg,
+	#2563EB,
+	#4F46E5);
+
+	color:white;
+
+	font-size:17px;
+	font-weight:700;
+
+	cursor:pointer;
+
+	transition:.3s;
+}
+
+.btn:hover{
+
+	transform:
+	translateY(-4px);
+
+	box-shadow:
+	0 15px 35px
+	rgba(79,70,229,.30);
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+@keyframes fadeUp{
+
+	from{
+		opacity:0;
+
+		transform:
+		translateY(40px);
+	}
+
+	to{
+		opacity:1;
+
+		transform:
+		translateY(0);
+	}
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px){
+
+	.post-job-container{
+
+		flex-direction:column;
+	}
+
+	.left-panel,
+	.post-job-card{
+
+		width:100%;
+	}
+
+	.left-panel{
+
+		text-align:center;
+	}
+
+	.left-panel h1{
+
+		font-size:42px;
+	}
+}
+
+@media(max-width:768px){
+
+	.row{
+
+		grid-template-columns:
+		1fr;
+	}
+
+	.post-job-card{
+
+		padding:30px;
+	}
+}

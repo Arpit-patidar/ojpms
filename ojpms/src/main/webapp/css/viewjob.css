@@ -1,0 +1,523 @@
+@charset "UTF-8";
+
+/* ==========================
+   ROOT COLORS
+========================== */
+
+:root{
+
+	--bg-dark:#0B1120;
+	--bg-second:#111827;
+	--bg-third:#1E293B;
+
+	--primary:#2563EB;
+	--secondary:#4F46E5;
+	--accent:#38BDF8;
+
+	--success:#10B981;
+	--danger:#EF4444;
+
+	--text:#F8FAFC;
+	--light:#CBD5E1;
+	--muted:#94A3B8;
+
+	--glass:rgba(255,255,255,.06);
+	--border:rgba(255,255,255,.08);
+	--shadow:rgba(0,0,0,.30);
+}
+
+/* ==========================
+   GLOBAL
+========================== */
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+	background:
+	radial-gradient(
+	circle at top left,
+	rgba(37,99,235,.12),
+	transparent 30%),
+
+	radial-gradient(
+	circle at bottom right,
+	rgba(79,70,229,.12),
+	transparent 30%),
+
+	linear-gradient(
+	135deg,
+	#020617,
+	#0F172A,
+	#111827,
+	#1E293B);
+
+	background-size:400% 400%;
+
+	animation:
+	gradientMove 16s ease infinite;
+
+	color:var(--text);
+
+	min-height:100vh;
+
+	padding:50px 8%;
+}
+
+/* ==========================
+   BACKGROUND ANIMATION
+========================== */
+
+@keyframes gradientMove{
+
+	0%{
+		background-position:0% 50%;
+	}
+
+	50%{
+		background-position:100% 50%;
+	}
+
+	100%{
+		background-position:0% 50%;
+	}
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+	width:100%;
+	max-width:1400px;
+	margin:auto;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.jobs-header{
+
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+
+	gap:20px;
+	flex-wrap:wrap;
+
+	margin-bottom:35px;
+}
+
+.jobs-header h1{
+
+	font-size:42px;
+	font-weight:700;
+	color:white;
+}
+
+.refresh-btn{
+
+	text-decoration:none;
+
+	height:55px;
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	padding:0 28px;
+
+	border-radius:16px;
+
+	background:
+	linear-gradient(
+	135deg,
+	#2563EB,
+	#4F46E5);
+
+	color:white;
+
+	font-weight:600;
+
+	white-space:nowrap;
+
+	transition:.3s;
+
+	box-shadow:
+	0 10px 25px
+	rgba(37,99,235,.25);
+}
+
+.refresh-btn:hover{
+
+	transform:
+	translateY(-4px);
+
+	box-shadow:
+	0 15px 35px
+	rgba(79,70,229,.35);
+}
+
+/* ==========================
+   SEARCH
+========================== */
+
+.search-section{
+	margin-bottom:40px;
+}
+
+.search-box{
+
+	display:flex;
+	align-items:center;
+	gap:15px;
+	width:100%;
+}
+
+.search-box input[type="text"]{
+
+	flex:1;
+
+	height:55px;
+
+	padding:0 22px;
+
+	border:
+	1px solid
+	var(--border);
+
+	background:
+	var(--glass);
+
+	backdrop-filter:
+	blur(18px);
+
+	border-radius:16px;
+
+	outline:none;
+
+	color:white;
+
+	font-size:16px;
+}
+
+.search-box input::placeholder{
+	color:var(--muted);
+}
+
+.search-btn{
+
+	height:55px;
+
+	padding:0 35px;
+
+	border:none;
+	cursor:pointer;
+
+	border-radius:16px;
+
+	background:
+	linear-gradient(
+	135deg,
+	#2563EB,
+	#4F46E5);
+
+	color:white;
+
+	font-size:16px;
+	font-weight:600;
+
+	transition:.3s;
+}
+
+.search-btn:hover{
+
+	transform:
+	translateY(-3px);
+
+	box-shadow:
+	0 15px 35px
+	rgba(79,70,229,.35);
+}
+
+/* ==========================
+   JOB GRID
+========================== */
+
+.jobs-grid{
+
+	display:grid;
+
+	grid-template-columns:
+	repeat(auto-fit,
+	minmax(350px,1fr));
+
+	gap:30px;
+
+	align-items:stretch;
+}
+
+/* ==========================
+   JOB CARD
+========================== */
+
+.job-card{
+
+	background:
+	var(--glass);
+
+	backdrop-filter:
+	blur(20px);
+
+	border:
+	1px solid
+	var(--border);
+
+	border-radius:28px;
+
+	padding:30px;
+
+	box-shadow:
+	0 10px 30px
+	rgba(0,0,0,.18);
+
+	transition:.35s;
+
+	display:flex;
+	flex-direction:column;
+
+	min-height:420px;
+	height:100%;
+}
+
+.job-card:hover{
+
+	transform:
+	translateY(-10px);
+
+	border:
+	1px solid
+	rgba(56,189,248,.25);
+
+	box-shadow:
+	0 20px 50px
+	rgba(37,99,235,.20);
+}
+
+.job-title{
+
+	font-size:28px;
+	font-weight:700;
+
+	color:white;
+
+	margin-bottom:25px;
+}
+
+/* ==========================
+   JOB DETAILS
+========================== */
+
+.job-details{
+
+	display:flex;
+	flex-direction:column;
+
+	gap:18px;
+
+	flex:1;
+}
+
+.job-info{
+
+	display:flex;
+	flex-direction:column;
+
+	gap:8px;
+}
+
+.info-label{
+
+	font-size:14px;
+	font-weight:600;
+
+	color:var(--accent);
+}
+
+.info-value{
+
+	font-size:16px;
+	line-height:1.7;
+
+	color:var(--light);
+
+	word-break:break-word;
+}
+
+/* ==========================
+   ACTIONS
+========================== */
+
+.job-actions{
+
+	margin-top:auto;
+	padding-top:25px;
+}
+
+.apply-form{
+	width:100%;
+}
+
+.apply-btn{
+
+	width:100%;
+
+	padding:16px;
+
+	border:none;
+	cursor:pointer;
+
+	border-radius:16px;
+
+	background:
+	linear-gradient(
+	135deg,
+	#2563EB,
+	#4F46E5);
+
+	color:white;
+
+	font-size:16px;
+	font-weight:600;
+
+	transition:.3s;
+}
+
+.apply-btn:hover{
+
+	transform:
+	translateY(-3px);
+
+	box-shadow:
+	0 15px 35px
+	rgba(79,70,229,.35);
+}
+
+/* ==========================
+   ERROR MESSAGE
+========================== */
+
+.error-message{
+
+	display:flex;
+	align-items:center;
+	gap:10px;
+
+	margin-top:18px;
+
+	padding:14px;
+
+	background:
+	rgba(239,68,68,.15);
+
+	border:
+	1px solid
+	rgba(239,68,68,.25);
+
+	border-radius:14px;
+}
+
+.error-message p{
+
+	color:#FCA5A5;
+	font-size:14px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+	.jobs-header{
+
+		flex-direction:column;
+		align-items:flex-start;
+	}
+
+	.search-box{
+		flex-direction:column;
+	}
+
+	.search-btn,
+	.refresh-btn{
+		width:100%;
+	}
+
+	.jobs-grid{
+		grid-template-columns:1fr;
+	}
+}
+.nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    gap:15px;
+}
+
+.back-btn,
+.home-btn{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    color:white;
+}
+
+.back-btn{
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.back-btn:hover{
+
+    background:rgba(255,255,255,.15);
+
+    transform:translateY(-2px);
+}
+
+.home-btn{
+
+    background:linear-gradient(
+        135deg,
+        #4F46E5,
+        #7C3AED
+    );
+}
+
+.home-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px rgba(124,58,237,.35);
+}
