@@ -40,40 +40,38 @@
 
 	<persistence-unit name="jsp" transaction-type="RESOURCE_LOCAL">
 
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
 		<properties>
 
-			<!-- ================= DB CONFIG ================= -->
+			<!-- DRIVER -->
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
+			<!-- DB URL (Render) -->
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://dpg-xxxx.render.com:5432/ojpms"/>
+				value="jdbc:postgresql://dpg-d8scnkugvqtc7382hf8g-a.oregon-postgres.render.com:5432/ojpms"/>
 
+			<!-- USER -->
 			<property name="javax.persistence.jdbc.user" value="ojpms_user"/>
 
-			<property name="javax.persistence.jdbc.password" value="YOUR_PASSWORD"/>
+			<!-- PASSWORD (IMPORTANT) -->
+			<property name="javax.persistence.jdbc.password" value="tsEAzbSOcuoWbyQMeXeg8Lm8FJWjBzqT"/>
 
-			<!-- ================= HIBERNATE ================= -->
+			<!-- HIBERNATE -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.PostgreSQLDialect"/>
 
-			<!-- PRODUCTION SAFE -->
-			<property name="hibernate.hbm2ddl.auto" value="validate"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 
-			<!-- LOGGING OFF (FAST) -->
+			<!-- PERFORMANCE -->
 			<property name="hibernate.show_sql" value="false"/>
 			<property name="hibernate.format_sql" value="false"/>
 
-			<!-- ================= HIKARICP (IMPORTANT) ================= -->
+			<!-- HIKARI POOL -->
 			<property name="hibernate.connection.provider_class"
 				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
 
 			<property name="hibernate.hikari.minimumIdle" value="2"/>
 			<property name="hibernate.hikari.maximumPoolSize" value="10"/>
 			<property name="hibernate.hikari.idleTimeout" value="30000"/>
-			<property name="hibernate.hikari.connectionTimeout" value="20000"/>
-			<property name="hibernate.hikari.maxLifetime" value="1800000"/>
 
 		</properties>
 
