@@ -1,48 +1,68 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
-	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-	version="2.1">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+    version="2.1">
 
-	<persistence-unit name="jsp" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="jsp" transaction-type="RESOURCE_LOCAL">
 
-		<properties>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-			<!-- DRIVER -->
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+        <properties>
 
-			<!-- DB URL (Render) -->
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://dpg-d8scnkugvqtc7382hf8g-a.oregon-postgres.render.com:5432/ojpms"/>
+            <!-- PostgreSQL Driver -->
+            <property name="javax.persistence.jdbc.driver"
+                value="org.postgresql.Driver"/>
 
-			<!-- USER -->
-			<property name="javax.persistence.jdbc.user" value="ojpms_user"/>
+            <!-- Render PostgreSQL URL -->
+            <property name="javax.persistence.jdbc.url"
+                value="jdbc:postgresql://dpg-d8scnkugvqtc7382hf8g-a.oregon-postgres.render.com:5432/ojpms?sslmode=require"/>
 
-			<!-- PASSWORD (IMPORTANT) -->
-			<property name="javax.persistence.jdbc.password" value="tsEAzbSOcuoWbyQMeXeg8Lm8FJWjBzqT"/>
+            <!-- Username -->
+            <property name="javax.persistence.jdbc.user"
+                value="ojpms_user"/>
 
-			<!-- HIBERNATE -->
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!-- Password -->
+            <property name="javax.persistence.jdbc.password"
+                value="tsEAzbSOcuoWbyQMeXeg8Lm8FJWjBzqT"/>
 
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!-- Hibernate -->
+            <property name="hibernate.dialect"
+                value="org.hibernate.dialect.PostgreSQLDialect"/>
 
-			<!-- PERFORMANCE -->
-			<property name="hibernate.show_sql" value="false"/>
-			<property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.hbm2ddl.auto"
+                value="update"/>
 
-			<!-- HIKARI POOL -->
-			<property name="hibernate.connection.provider_class"
-				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <!-- SQL Log -->
+            <property name="hibernate.show_sql"
+                value="true"/>
 
-			<property name="hibernate.hikari.minimumIdle" value="2"/>
-			<property name="hibernate.hikari.maximumPoolSize" value="10"/>
-			<property name="hibernate.hikari.idleTimeout" value="30000"/>
+            <property name="hibernate.format_sql"
+                value="true"/>
 
-		</properties>
+            <!-- HikariCP -->
+            <property name="hibernate.connection.provider_class"
+                value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
 
-	</persistence-unit>
+            <property name="hibernate.hikari.minimumIdle"
+                value="2"/>
+
+            <property name="hibernate.hikari.maximumPoolSize"
+                value="10"/>
+
+            <property name="hibernate.hikari.idleTimeout"
+                value="30000"/>
+
+            <property name="hibernate.hikari.connectionTimeout"
+                value="20000"/>
+
+            <property name="hibernate.hikari.maxLifetime"
+                value="1800000"/>
+
+        </properties>
+
+    </persistence-unit>
 
 </persistence>
