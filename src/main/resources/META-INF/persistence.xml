@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-    version="2.1">
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
 
     <persistence-unit name="jsp" transaction-type="RESOURCE_LOCAL">
 
@@ -14,52 +14,32 @@
 
             <!-- PostgreSQL Driver -->
             <property name="javax.persistence.jdbc.driver"
-                value="org.postgresql.Driver"/>
+                      value="org.postgresql.Driver"/>
 
-            <!-- Render PostgreSQL URL -->
+            <!-- PostgreSQL URL -->
             <property name="javax.persistence.jdbc.url"
-                value="jdbc:postgresql://dpg-d8scnkugvqtc7382hf8g-a.oregon-postgres.render.com:5432/ojpms?sslmode=require"/>
+                      value="jdbc:postgresql://dpg-d8scnkugvqtc7382hf8g-a.oregon-postgres.render.com:5432/ojpms?sslmode=require"/>
 
             <!-- Username -->
             <property name="javax.persistence.jdbc.user"
-                value="ojpms_user"/>
+                      value="ojpms_user"/>
 
             <!-- Password -->
             <property name="javax.persistence.jdbc.password"
-                value="tsEAzbSOcuoWbyQMeXeg8Lm8FJWjBzqT"/>
+                      value="tsEAzbSOcuoWbyQMeXeg8Lm8FJWjBzqT"/>
 
             <!-- Hibernate -->
             <property name="hibernate.dialect"
-                value="org.hibernate.dialect.PostgreSQLDialect"/>
+                      value="org.hibernate.dialect.PostgreSQLDialect"/>
 
             <property name="hibernate.hbm2ddl.auto"
-                value="update"/>
+                      value="update"/>
 
-            <!-- SQL Log -->
             <property name="hibernate.show_sql"
-                value="true"/>
+                      value="true"/>
 
             <property name="hibernate.format_sql"
-                value="true"/>
-
-            <!-- HikariCP -->
-            <property name="hibernate.connection.provider_class"
-                value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
-
-            <property name="hibernate.hikari.minimumIdle"
-                value="2"/>
-
-            <property name="hibernate.hikari.maximumPoolSize"
-                value="10"/>
-
-            <property name="hibernate.hikari.idleTimeout"
-                value="30000"/>
-
-            <property name="hibernate.hikari.connectionTimeout"
-                value="20000"/>
-
-            <property name="hibernate.hikari.maxLifetime"
-                value="1800000"/>
+                      value="true"/>
 
         </properties>
 
