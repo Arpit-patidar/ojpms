@@ -1,133 +1,387 @@
 /* ==========================================
-   COMP PORTAL FINAL JS
+        COMP PORTAL FINAL JS
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("COMP PORTAL LOADED");
+console.log("COMP PORTAL READY");
 
-    /* ==========================
-       TOPBAR SCROLL EFFECT
-    ========================== */
+/*==========================================
+        LOADER
+==========================================*/
 
-    const topbar = document.querySelector(".topbar");
+const loader=document.getElementById("loader");
 
-    window.addEventListener("scroll", () => {
+window.addEventListener("load",()=>{
 
-        if (window.scrollY > 50) {
-            topbar.classList.add("topbar-scroll");
-        } else {
-            topbar.classList.remove("topbar-scroll");
-        }
+setTimeout(()=>{
 
-    });
+if(loader){
 
-    /* ==========================
-       BUTTON LOADING
-    ========================== */
+loader.style.opacity="0";
+loader.style.visibility="hidden";
 
-    const form = document.querySelector("form");
+}
 
-    if (form) {
+},1200);
 
-        form.addEventListener("submit", () => {
+});
 
-            const btn =
-                document.querySelector(".login-btn");
+/*==========================================
+      CURSOR LIGHT
+==========================================*/
 
-            if (btn) {
+const cursor=document.querySelector(".cursor-light");
 
-                btn.innerHTML =
-                    "PROCESSING...";
+document.addEventListener("mousemove",(e)=>{
 
-                btn.disabled = true;
-            }
+if(cursor){
 
-        });
+cursor.style.left=e.clientX+"px";
 
-    }
+cursor.style.top=e.clientY+"px";
 
-    /* ==========================
-       CARD HOVER EFFECT
-    ========================== */
+}
 
-    document.querySelectorAll(
-        ".feature-card,.stat-box"
-    ).forEach(card => {
+});
 
-        card.addEventListener(
-            "mouseenter",
-            () => {
+/*==========================================
+      APPLE NAVBAR
+==========================================*/
 
-                card.style.transform =
-                    "translateY(-8px) scale(1.03)";
-            }
-        );
+const navButtons=document.querySelectorAll(".nav-btn");
 
-        card.addEventListener(
-            "mouseleave",
-            () => {
+const activePill=document.getElementById("active-pill");
 
-                card.style.transform =
-                    "translateY(0) scale(1)";
-            }
-        );
+function movePill(btn){
 
-    });
+if(!btn || !activePill) return;
 
-    /* ==========================
-       CURSOR LIGHT FOLLOW
-    ========================== */
+activePill.style.width=btn.offsetWidth+"px";
 
-    const cursor =
-        document.querySelector(".cursor-light");
+activePill.style.height=btn.offsetHeight+"px";
 
-    if (cursor) {
+activePill.style.transform=
+`translateX(${btn.offsetLeft}px)`;
 
-        document.addEventListener(
-            "mousemove",
-            e => {
+}
 
-                cursor.style.left =
-                    e.clientX + "px";
+const active=document.querySelector(".nav-btn.active");
 
-                cursor.style.top =
-                    e.clientY + "px";
-            }
-        );
+if(active){
 
-    }
+setTimeout(()=>{
 
-    /* ==========================
-       RIPPLE EFFECT
-    ========================== */
+movePill(active);
 
-    document.addEventListener(
-        "click",
-        function(e){
+},100);
 
-            const ripple =
-                document.createElement("span");
+}
 
-            ripple.classList.add("ripple");
+navButtons.forEach(btn=>{
 
-            ripple.style.left =
-                e.pageX + "px";
+btn.addEventListener("click",()=>{
 
-            ripple.style.top =
-                e.pageY + "px";
+navButtons.forEach(b=>{
 
-            document.body.appendChild(
-                ripple
-            );
+b.classList.remove("active");
 
-            setTimeout(() => {
+});
 
-                ripple.remove();
+btn.classList.add("active");
 
-            },600);
+movePill(btn);
 
-        }
-    );
+});
 
-}); 
+});
+
+window.addEventListener("resize",()=>{
+
+const active=document.querySelector(".nav-btn.active");
+
+movePill(active);
+
+});
+
+/*==========================================
+      GLARE EFFECT
+==========================================*/
+
+const nav=document.getElementById("nav");
+
+const glare=document.getElementById("glare");
+
+if(nav){
+
+nav.addEventListener("mousemove",(e)=>{
+
+const rect=nav.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+if(glare){
+
+glare.style.setProperty("--x",x+"px");
+
+glare.style.setProperty("--y",y+"px");
+
+}
+
+});
+
+}
+
+/*==========================================
+      THEME BUTTON
+==========================================*/
+
+const themeBtn=document.getElementById("theme-btn");
+
+if(themeBtn){
+
+themeBtn.addEventListener("click",()=>{
+
+const root=document.documentElement;
+
+let theme=root.getAttribute("data-theme");
+
+if(theme==="light"){
+
+theme="dark";
+
+}
+
+else if(theme==="dark"){
+
+theme="classic";
+
+}
+
+else{
+
+theme="light";
+
+}
+
+root.setAttribute("data-theme",theme);
+
+localStorage.setItem("theme",theme);
+
+});
+
+}
+
+/*==========================================
+      LOAD SAVED THEME
+==========================================*/
+
+const savedTheme=localStorage.getItem("theme");
+
+if(savedTheme){
+
+document.documentElement.setAttribute(
+
+"data-theme",
+
+savedTheme
+
+);
+
+}
+
+/*==========================================
+      RIPPLE EFFECT
+==========================================*/
+
+document.addEventListener("click",(e)=>{
+
+const ripple=document.createElement("span");
+
+ripple.className="ripple";
+
+ripple.style.left=e.pageX+"px";
+
+ripple.style.top=e.pageY+"px";
+
+document.body.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},700);
+
+});
+
+/*==========================================
+      CARD HOVER
+==========================================*/
+
+document.querySelectorAll(
+
+".card,.glass-card,.stat-box"
+
+).forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform=
+
+"translateY(-10px) scale(1.03)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform=
+
+"translateY(0) scale(1)";
+
+});
+
+});
+
+/*==========================================
+      COUNTER
+==========================================*/
+
+const counters=document.querySelectorAll(".counter");
+
+const speed=200;
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.getAttribute("data-target");
+
+const count=+counter.innerText;
+
+const inc=target/speed;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+inc);
+
+requestAnimationFrame(update);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+update();
+
+});
+
+/*==========================================
+      SCROLL ANIMATION
+==========================================*/
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+
+threshold:0.2
+
+});
+
+document.querySelectorAll(
+
+".card,.stat-box,.hero-left,.hero-right,.about,.workflow,.companies,.cta"
+
+).forEach(el=>{
+
+observer.observe(el);
+
+});
+
+/*==========================================
+      ACTIVE NAV ON SCROLL
+==========================================*/
+
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const top=section.offsetTop-150;
+
+if(pageYOffset>=top){
+
+current=section.getAttribute("id");
+
+}
+
+});
+
+navButtons.forEach(link=>{
+
+link.classList.remove("active");
+
+const href=link.getAttribute("href");
+
+if(href && href.includes(current)){
+
+link.classList.add("active");
+
+movePill(link);
+
+}
+
+});
+
+});
+
+/*==========================================
+      SMOOTH SCROLL
+==========================================*/
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+
+anchor.addEventListener("click",function(e){
+
+e.preventDefault();
+
+const target=document.querySelector(
+
+this.getAttribute("href")
+
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+});

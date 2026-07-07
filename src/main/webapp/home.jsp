@@ -1,9 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,18 +13,24 @@
 
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
 	rel="stylesheet">
 
-<!-- Remix Icon -->
+<!-- Remix Icons -->
+
 <link
 	href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
 	rel="stylesheet">
 
 <!-- CSS -->
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/theme.css">
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css">
 
 <link rel="stylesheet"
@@ -36,8 +42,14 @@
 </head>
 
 <body>
-<jsp:include page="theme.jsp"/>
-	<!--================ LOADER ================-->
+
+	<!-- Theme -->
+
+
+
+	<!-- =========================
+        LOADER
+========================= -->
 
 	<div id="loader">
 
@@ -46,7 +58,9 @@
 			<h1>COMP PORTAL</h1>
 
 			<div class="loader-line">
+
 				<span></span>
+
 			</div>
 
 			<p>Loading Experience...</p>
@@ -55,60 +69,141 @@
 
 	</div>
 
-	<!--================ BACKGROUND ================-->
+	<!-- =========================
+        THREE JS
+========================= -->
 
-	<canvas id="bgCanvas"></canvas>
+	<div id="three-container"></div>
 
-	<div class="cursor-light"></div>
+	<!-- =========================
+        BACKGROUND
+========================= -->
 
-	<div class="aurora"></div>
+	<div class="bg-mesh">
 
-	<div class="blob blob1"></div>
+		<div class="blob blob1"></div>
 
-	<div class="blob blob2"></div>
+		<div class="blob blob2"></div>
 
-	<div class="blob blob3"></div>
+		<div class="blob blob3"></div>
+
+	</div>
 
 	<div class="grid-bg"></div>
 
 	<div class="noise"></div>
 
-	<!--================ HEADER ================-->
+	<div class="aurora"></div>
+
+	<div class="cursor-light"></div>
+
+	<!-- =========================
+        HEADER
+========================= -->
 
 	<header>
 
-		<nav class="navbar">
+		<nav class="liquid-nav" id="nav">
+
+			<div class="liquid-glare-container">
+
+				<div class="liquid-glare" id="glare"></div>
+
+			</div>
 
 			<div class="logo">
 
-				<h1>
+				<h2>
+
 					COMP <span>Portal</span>
-				</h1>
+
+				</h2>
 
 			</div>
 
-			<div class="nav-links">
+			<div class="nav-items">
 
-				<a href="#">Home</a> <a href="#about">About</a> <a href="#features">Features</a>
+				<div class="active-pill" id="active-pill"></div>
 
-				<a href="#workflow">Workflow</a> <a href="#stats">Stats</a> <a
-					href="login.jsp">Login</a> <a href="register.jsp" class="nav-btn">
+				<a href="#" class="nav-btn active">
 
-					Register </a>
+					<div class="btn-content">
+
+						<i class="ri-home-5-line"></i> <span>Home</span>
+
+					</div>
+
+				</a> <a href="#about" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-information-line"></i> <span>About</span>
+
+					</div>
+
+				</a> <a href="#features" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-star-line"></i> <span>Features</span>
+
+					</div>
+
+				</a> <a href="#workflow" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-flow-chart"></i> <span>Workflow</span>
+
+					</div>
+
+				</a> <a href="#stats" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-bar-chart-box-line"></i> <span>Stats</span>
+
+					</div>
+
+				</a> <a href="login.jsp" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-login-circle-line"></i> <span>Login</span>
+
+					</div>
+
+				</a> <a href="register.jsp" class="nav-btn">
+
+					<div class="btn-content">
+
+						<i class="ri-user-add-line"></i> <span>Register</span>
+
+					</div>
+
+				</a>
 
 			</div>
 
-			<div class="menu-btn">
+			<div class="divider"></div>
 
-				<i class="ri-menu-3-line"></i>
+			<button class="theme-btn" id="theme-btn">
 
-			</div>
+				<div class="theme-icon-wrapper">
+
+					<i class="ri-sun-line sun"></i> <i class="ri-moon-line moon"></i>
+
+				</div>
+
+			</button>
 
 		</nav>
 
 	</header>
 
-	<!--================ HERO ================-->
+	<!-- =========================
+        HERO
+========================= -->
 
 	<section class="hero">
 
@@ -122,13 +217,13 @@
 
 			<h1>
 
-				Build Your <span>Career</span> With Confidence
+				Build Your <span>Dream Career</span> With Confidence
 
 			</h1>
 
-			<p>Discover thousands of jobs from trusted companies. Connect
-				with recruiters. Apply instantly. Track your applications. Build
-				your future.</p>
+			<p>Discover thousands of verified jobs, connect with top
+				recruiters, apply instantly, and build your future using COMP
+				Portal.</p>
 
 			<div class="hero-buttons">
 
@@ -150,17 +245,17 @@
 
 					<li>Java Developer</li>
 
-					<li>Backend Developer</li>
+					<li>Spring Boot Developer</li>
 
-					<li>Spring Boot</li>
+					<li>Backend Developer</li>
 
 					<li>Full Stack Developer</li>
 
 					<li>Software Engineer</li>
 
-					<li>QA Engineer</li>
-
 					<li>UI Developer</li>
+
+					<li>QA Engineer</li>
 
 				</ul>
 
@@ -169,26 +264,22 @@
 		</div>
 
 	</section>
-
-	<!--================ COMPANY ================-->
+	<!-- =========================
+        COMPANIES
+========================= -->
 
 	<section class="companies">
 
-		<h2>Trusted By</h2>
+		<h2>Trusted By Top Companies</h2>
 
 		<div class="company-slider">
 
 			<div class="company-track">
 
-				<span>Google</span> <span>Amazon</span> <span>Microsoft</span> <span>Oracle</span>
-
-				<span>Infosys</span> <span>TCS</span> <span>Accenture</span> <span>Capgemini</span>
-
-				<span>IBM</span> <span>QSpiders</span> <span>JSpiders</span> <span>Google</span>
-
-				<span>Amazon</span> <span>Microsoft</span> <span>Oracle</span> <span>Infosys</span>
-
-				<span>TCS</span> <span>Accenture</span> <span>Capgemini</span> <span>IBM</span>
+				<span>Google</span> <span>Microsoft</span> <span>Amazon</span> <span>Oracle</span>
+				<span>IBM</span> <span>TCS</span> <span>Infosys</span> <span>Capgemini</span>
+				<span>Accenture</span> <span>Wipro</span> <span>Google</span> <span>Microsoft</span>
+				<span>Amazon</span> <span>Oracle</span> <span>IBM</span>
 
 			</div>
 
@@ -196,19 +287,24 @@
 
 	</section>
 
-	<!--================ ABOUT ================-->
+	<!-- =========================
+        ABOUT
+========================= -->
 
 	<section class="about" id="about">
 
 		<h2>Why Choose COMP Portal?</h2>
 
-		<p>COMP Portal connects talented candidates with top recruiters
-			through a modern hiring platform designed for speed, transparency and
-			growth.</p>
+		<p>COMP Portal is a modern placement management system designed
+			for students, recruiters and administrators. Search jobs, apply
+			instantly, manage applications, and build your professional career
+			with confidence.</p>
 
 	</section>
 
-	<!--================ FEATURES ================-->
+	<!-- =========================
+        FEATURES
+========================= -->
 
 	<section class="features" id="features">
 
@@ -222,7 +318,7 @@
 
 				<h3>Smart Search</h3>
 
-				<p>Find jobs based on skills and experience.</p>
+				<p>Find jobs based on skills, qualification and experience.</p>
 
 			</div>
 
@@ -232,27 +328,27 @@
 
 				<h3>Easy Apply</h3>
 
-				<p>One click application process.</p>
+				<p>Apply to jobs with one click using a simple interface.</p>
 
 			</div>
 
 			<div class="card">
 
-				<i class="ri-mail-send-fill"></i>
+				<i class="ri-notification-4-fill"></i>
 
-				<h3>Email Alerts</h3>
+				<h3>Instant Alerts</h3>
 
-				<p>Receive instant notifications.</p>
+				<p>Receive real time notifications for every opportunity.</p>
 
 			</div>
 
 			<div class="card">
 
-				<i class="ri-briefcase-fill"></i>
+				<i class="ri-briefcase-4-fill"></i>
 
 				<h3>Recruiter Panel</h3>
 
-				<p>Manage jobs and applications.</p>
+				<p>Recruiters can manage jobs, applications and hiring easily.</p>
 
 			</div>
 
@@ -260,7 +356,9 @@
 
 	</section>
 
-	<!--================ WORKFLOW ================-->
+	<!-- =========================
+        WORKFLOW
+========================= -->
 
 	<section class="workflow" id="workflow">
 
@@ -272,7 +370,7 @@
 
 				<div class="circle">1</div>
 
-				<h3>Register</h3>
+				<a href="register.jsp"><h3>Register</h3></a>
 
 			</div>
 
@@ -282,7 +380,7 @@
 
 				<div class="circle">2</div>
 
-				<h3>Login</h3>
+				<a href="login.jsp"><h3>Login</h3></a>
 
 			</div>
 
@@ -320,13 +418,15 @@
 
 	</section>
 
-	<!--================ STATS ================-->
+	<!-- =========================
+        STATS
+========================= -->
 
 	<section class="stats" id="stats">
 
 		<div class="stat-box">
 
-			<h2 class="counter" data-target="1000">0</h2>
+			<h2 class="counter" data-target="1500">0</h2>
 
 			<p>Jobs Posted</p>
 
@@ -334,7 +434,7 @@
 
 		<div class="stat-box">
 
-			<h2 class="counter" data-target="500">0</h2>
+			<h2 class="counter" data-target="550">0</h2>
 
 			<p>Companies</p>
 
@@ -342,7 +442,7 @@
 
 		<div class="stat-box">
 
-			<h2 class="counter" data-target="2000">0</h2>
+			<h2 class="counter" data-target="3500">0</h2>
 
 			<p>Registered Users</p>
 
@@ -357,53 +457,85 @@
 		</div>
 
 	</section>
-
-	<!--================ CTA ================-->
+	<!-- =========================
+        CTA
+========================= -->
 
 	<section class="cta">
 
-		<h2>Ready To Build Your Career?</h2>
+		<div class="glass-card">
 
-		<p>Join thousands of professionals and start your journey today.</p>
+			<h2>Ready To Build Your Career?</h2>
 
-		<a href="register.jsp" class="btn"> Create Free Account </a>
+			<p>Join thousands of students and recruiters already using COMP
+				Portal. Start your journey today.</p>
 
-	</section>
-
-	<!--================ FOOTER ================-->
-
-	<footer>
-
-		<h2>COMP Portal</h2>
-
-		<p>Build Your Career With Confidence</p>
-
-		<div class="social">
-
-			<i class="ri-facebook-fill"></i> <i class="ri-instagram-line"></i> <i
-				class="ri-linkedin-fill"></i> <i class="ri-github-fill"></i>
+			<a href="register.jsp" class="btn"> Create Free Account </a>
 
 		</div>
 
-		<p>© 2026 COMP Portal</p>
+	</section>
+
+	<!-- =========================
+        FOOTER
+========================= -->
+
+	<footer>
+
+		<div class="footer-container">
+
+			<div class="footer-logo">
+
+				<h2>
+
+					COMP <span>Portal</span>
+
+				</h2>
+
+				<p>Build Your Career With Confidence.</p>
+
+			</div>
+
+
+			<div class="social">
+
+				<a href="#"><i class="ri-facebook-fill"></i></a> <a href="#"><i
+					class="ri-instagram-line"></i></a> <a href="#"><i
+					class="ri-linkedin-fill"></i></a> <a href="#"><i
+					class="ri-github-fill"></i></a> <a href="#"><i
+					class="ri-twitter-x-line"></i></a>
+
+			</div>
+
+			<div class="copyright">© 2026 COMP Portal. All Rights Reserved.
+
+			</div>
+
+		</div>
 
 	</footer>
 
-	<!--================ JS ================-->
+	<!-- =========================
+        JAVASCRIPT
+========================= -->
+
+	<!-- Three JS -->
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+	<!-- GSAP -->
+
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
-	<script src="<%=request.getContextPath()%>/js/galaxy.js"></script>
+	<!-- Galaxy Background -->
 
-	<script src="<%=request.getContextPath()%>/js/ui.js"></script>
+	<script src="<%=request.getContextPath()%>/js/particles3d.js"></script> 
+
+	<!-- UI Animation -->
+
 	<script src="<%=request.getContextPath()%>/js/final.js"></script>
-	<%--<script src="<%=request.getContextPath()%>/js/matrix.js"></script> 
 
-<script src="<%=request.getContextPath()%>/js/effects.js"></script> --%>
 </body>
 
 </html>
-
